@@ -1,0 +1,38 @@
+.phone-book {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list {
+  border: 1px solid;
+}
+
+.accordion.open {
+  background-color: #f0f0f0;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion-content {
+  padding: 10px;
+}
+
+.phone-number {
+  font-weight: bold;
+}
+
+.email {
+  color: #666;
+}
