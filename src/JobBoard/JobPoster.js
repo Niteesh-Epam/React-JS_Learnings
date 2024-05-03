@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import JobBoardWrapper from "./JobBoard";
 
 const JobPoster = () => {
@@ -46,7 +46,7 @@ const JobPoster = () => {
     <JobBoardWrapper>
       <JobBoardWrapper.heading>Hacker News Job Board</JobBoardWrapper.heading>
       {jobs.map((item, index) => (
-        <div key={index}>
+        <div key={index} id='data-div'>
           <JobBoardWrapper.title>{item.title}</JobBoardWrapper.title>
           <JobBoardWrapper.JobPostdetails>
             <span>Job Poster: {item.by}</span>
