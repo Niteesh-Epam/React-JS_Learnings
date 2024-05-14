@@ -1,5 +1,5 @@
 import React from "react";
-import HigherorderComp from "../Components/Patterns/HOC";
+import HigherorderComp from "../Patterns/HOC";
 
 const Dropdown = ({ items, showdropDown, onToggle, onSelect }) => {
   return (
