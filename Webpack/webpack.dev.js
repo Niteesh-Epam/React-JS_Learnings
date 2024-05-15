@@ -13,7 +13,7 @@ module.exports = {
     // by using Defineplugin we make sure the URL points or API endpoints points to the specific domain
     new webpack.DefinePlugin({
       "process.env": {
-        API_URL: JSON.stringify("http://127.0.0.1:3001"),
+        BASE_URL: JSON.stringify("https://api.escuelajs.co/api/v1/auth"),
       },
     }),
   ],

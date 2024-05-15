@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   }, // compiler options are for typeChecking and not for configuration
-  "include": ["src", "Webpack/webpack.common.js"]
+  "include": ["src", "Webpack/webpack.common.js", "src/Axios"]
 }

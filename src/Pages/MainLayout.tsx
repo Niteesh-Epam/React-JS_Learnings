@@ -5,11 +5,11 @@ import CartIcon from "../Components/Cart/CartIcon";
 import ProfileIcon from "../Components/Login/LoginIcon";
 import classes from "../Components/SingleProduct/SingleProduct.module.css";
 import { Link, NavLink } from "react-router-dom";
-import { getToken } from "../Services/authService";
+import { getAccessToken } from "../Services/authService";
 
 const MainLayout = () => {
   const isAccess = true;
-  const AuthUserId = getToken();
+  const AuthUserId = getAccessToken();
   const { cartitems } = useProductState();
   const navigate = useNavigate();
   console.log(AuthUserId);

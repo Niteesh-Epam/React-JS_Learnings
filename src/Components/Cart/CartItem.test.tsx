@@ -7,7 +7,7 @@ import ProductsData, { useProductState } from "../../Store/ProductContext";
 // Mock the useProductState hook
 jest.mock("../../Store/ProductContext", () => ({
   __esModule: true,
-  useProductState: jest.fn(() => ({
+  useProductState: jest.fn().mockImplementation(() => ({
     handleAddItem: jest.fn(),
     handleRemoveItem: jest.fn(),
     TotalAmount: 100,
@@ -25,16 +25,16 @@ jest.mock("../../Store/ProductContext", () => ({
 
 describe("CartPage", () => {
   test("renders cart items and total amount", () => {});
-  // test("renders cart items and total amount", () => {
-  //   render(
-  //     <ProductsData>
-  //       <MemoryRouter>
-  //         <CartPage />
-  //       </MemoryRouter>
-  //     </ProductsData>
-  //   );
-  //   // Check if cart items are rendered
-  //   expect(screen.getByText("Ashirvad")).toBeInTheDocument();
-  //   expect(screen.getByText("Rs : 100")).toBeInTheDocument(); // Assuming the TotalAmount is rendered with the text 'Rs : 100'
-  // });
+  test("renders cart items and total amount", () => {
+    render(
+      <ProductsData>
+        <MemoryRouter>
+          <CartPage />
+        </MemoryRouter>
+      </ProductsData>
+    );
+    // Check if cart items are rendered
+    expect(screen.getByText("Ashirvad")).toBeInTheDocument();
+    expect(screen.getByText("Rs : 100")).toBeInTheDocument(); // Assuming the TotalAmount is rendered with the text 'Rs : 100'
+  });
 });

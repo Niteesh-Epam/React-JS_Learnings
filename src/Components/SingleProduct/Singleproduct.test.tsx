@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  render,
-  fireEvent,
-  findByText,
-  getByRole,
-} from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import { BrowserRouter } from "react-router-dom";
 import ProductsData from "../../Store/ProductContext";
-import '../../index'
 
 describe("SingleProduct", () => {
   const product = [

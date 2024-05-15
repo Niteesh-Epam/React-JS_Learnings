@@ -4,7 +4,8 @@ import {
   useActionData,
   type ActionFunctionArgs,
 } from "react-router-dom";
-import { AuthenticateUser } from "../../Services/authService";
+import { setAccesstoken, setRefreshtoken } from "../../Services/authService";
+import { login } from "../../Services/services";
 
 type ActionData = {
   email: string;
@@ -56,11 +57,14 @@ export const LoginPageActions = async ({ request }: ActionFunctionArgs) => {
     email: String(data.get("email")),
     password: String(data.get("password")),
   };
-
-  const AuthUser = AuthenticateUser(submission);
-
-  console.log(AuthUser);
-  if (!AuthUser) {
+  const response = await login(submission);
+  console.log(response);
+  if (response.data && response?.data.access_token) {
+    setAccesstoken(response?.data.access_token);
+    setRefreshtoken(response?.data.refresh_token);
+  }
+  // const AuthUser = AuthenticateUser(submission);
+  if (response.status !== 201) {
     return { error: "User Doesnot Exist / Incorrect email or Password" };
   }
   // send your post request

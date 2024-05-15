@@ -5,22 +5,28 @@ import {
   useNavigate,
   type ActionFunctionArgs,
 } from "react-router";
-import { getToken, getUserById, deleteToken } from "../Services/authService";
+import { getAccessToken, deleteToken } from "../Services/authService";
+import { getUserDetails } from "../Services/services";
 
 interface UserData {
   userId: string;
   email: string;
   password: string;
   error?: string;
+  name?: string;
+}
+interface UserDataProps {
+  data: UserData;
 }
 
 const ProfilePage: React.FC = () => {
-  const data = useLoaderData() as UserData;
+  const data = useLoaderData() as UserDataProps;
   const navigate = useNavigate();
   console.log(data);
   return (
     <div>
-      <div>Email : {data.email}</div>
+      <div>Name : {data?.data.name}</div>
+      <div>Email : {data?.data.email}</div>
       <button
         onClick={() => {
           deleteToken();
@@ -32,11 +38,11 @@ const ProfilePage: React.FC = () => {
   );
 };
 
-export const profileLoader = () => {
-  const AuthUserId: string | null = getToken();
-  const AuthUser = getUserById(AuthUserId);
+export const profileLoader = async () => {
+  const AuthUserId: string | null = getAccessToken();
+  const AuthUser = await getUserDetails();
   console.log(AuthUser, AuthUserId);
-  if (AuthUser) {
+  if (AuthUser && AuthUserId !== null) {
     return AuthUser;
   }
 

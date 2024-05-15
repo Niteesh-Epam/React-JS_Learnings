@@ -17,7 +17,7 @@ import FormPage from "./Components/Login/Login";
 import ProfilePage, { profileLoader } from "./Pages/ProfilePage";
 
 function App() {
-  console.log("");
+  console.log(process.env.BASE_URL);
   const Router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
